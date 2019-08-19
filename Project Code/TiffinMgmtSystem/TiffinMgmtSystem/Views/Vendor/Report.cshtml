@@ -1,0 +1,81 @@
+﻿@model IPagedList<TiffinMgmtSystem.Models.OrderDetail>
+@using PagedList.Mvc;
+@using PagedList;
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Order Details</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">@Html.ActionLink("Home", "Report", "Vendor")</li>
+            <li class="breadcrumb-item active">Report</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive m-t-20 no-wrap">
+                    @using (Html.BeginForm("Report", "Vendor", FormMethod.Post))
+                    {
+                        <div class="row mx-auto px-3">
+                            @Html.TextBox("StartDate", null, new { @class = "form-control col-md-3 m-2", @type = "date", max = DateTime.Now.ToString("yyyy-MM-dd") })
+                            @Html.TextBox("EndDate", null, new { @class = "form-control col-md-3 m-2", @type = "date", max = DateTime.Now.ToString("yyyy-MM-dd") })
+                            <input type="submit" Value="Generate Report" class="btn btn-success m-2" />
+                        </div>
+                        <table class="table vm no-th-brd pro-of-month">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().OrderDate)
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().TiffinDetail.Type)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().Count)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().Total)
+                                    </th>
+                                </tr>
+                            </thead>
+                            @{ var Total = 0;
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.OrderDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UserDetail.FirstName)&nbsp;
+                                            @Html.DisplayFor(modelItem => item.UserDetail.LastName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TiffinDetail.Type)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Count)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Total)
+                                        </td>
+                                    </tr>
+                                    Total = Total + item.Total;
+                                }
+                            }
+                        </table>
+                        @Html.Label("Total Bill : " + Total, htmlAttributes: new { @style = "font-size: 25px; font-weight: 600", @class = "float-right text-dark mr-5" })
+                        <div class="btn btn-group-lg">
+                            @Html.PagedListPager(Model, page => Url.Action("Report", new { page }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true, LiElementClasses = new string[] { "page-item pagecount" } })
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

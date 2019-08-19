@@ -1,0 +1,82 @@
+﻿@model IEnumerable<TiffinMgmtSystem.Models.OrderDetail>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Report</title>
+</head>
+<body>
+    @using (Html.BeginForm("Details", "OrderDetails", FormMethod.Post))
+    {
+        <text> From Date:</text><input type="date" name="From" />
+        <text> To Date: </text><input type="date" name="To" />
+        <input type="submit" value="Search" class="btn btn-primary form-control" />
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Total)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VendorName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Count)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Extra.ExtraName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TiffinDetail.Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserDetail.FirstName)
+                </th>
+                <th></th>
+            </tr>
+            @{
+                var Total = 0;
+                foreach (var item in Model)
+
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrderDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Total, new { @id = "totalId" })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VendorName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Count)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Extra.ExtraName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TiffinDetail.Type)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserDetail.FirstName)
+                        </td>
+
+                    </tr>
+                    Total = Total + item.Total;
+                }
+            }
+            @Html.Label("Total Payment" + Total)
+        </table>
+    }
+</body>
+</html>

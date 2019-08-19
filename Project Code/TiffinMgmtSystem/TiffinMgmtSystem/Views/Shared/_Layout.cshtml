@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="Aress" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <title>Tiffin Management</title>
+    <link href="~/Assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Assets/css/style.css" rel="stylesheet" />
+    <link href="~/Assets/css/colors/default.css" id="theme" rel="stylesheet" />
+    <link href="~/Assets/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body class="card-no-border ">
+
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Tiffin Management</p>
+        </div>
+    </div>
+
+    <header class="topbar">
+        <nav class="navbar top-navbar navbar-expand-md navbar-light">
+            <div class="navbar-header">
+                <a class="navbar-brand text-themecolor" href="index.html">
+                    <i class="fa fa-cutlery fa-2x"></i>
+                    <span><strong>Tiffin Management </strong></span>
+                </a>
+            </div>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav my-lg-0">
+                    <li class="nav-item dropdown u-pro">
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="~/Assets/images/user-img/admin.png" alt="user" class="" />
+                            <span class="hidden-md-down">@Session["UserEmail"] &nbsp;<i class="fa fa-angle-down"></i></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right animated flipInY">
+                            <ul class="dropdown-user">
+                                <li>
+                                    <div class="dw-user-box text-center">
+                                        <div class="u-img"><img src="~/Assets/images/user-img/admin.png" alt="user"></div>
+                                        <div class="u-text">
+                                            <h4 class="my-2">@Session["UserEmail"]</h4>
+                                            @if (Session["UserRole"].ToString() == "1")
+                                            {
+                                                <span class="label label-danger">Admin</span>
+                                            }
+                                            @if (Session["UserRole"].ToString() == "2")
+                                            {
+                                                <span class="label label-primary">Vendor</span>
+                                            }
+                                            @if (Session["UserRole"].ToString() == "3")
+                                            {
+                                                <span class="label label-success">User</span>
+                                            }
+                                        </div>
+                                    </div>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>@Html.ActionLink("Sign Out", "SignOut", "Auth", null, htmlAttributes: new { @class = "btn btn-rounded btn-danger btn-md" })</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <aside class="left-sidebar">
+        <div class="scroll-sidebar">
+            <nav class="sidebar-nav">
+                @if (Session["UserRole"].ToString() == "1")
+                {
+                    @Html.Partial("_Admin")
+                }
+                @if (Session["UserRole"].ToString() == "2")
+                {
+                    @Html.Partial("_Vendor")
+                }
+                @if (Session["UserRole"].ToString() == "3")
+                {
+                    @Html.Partial("_User")
+                }
+            </nav>
+        </div>
+    </aside>
+
+    <div class="page-wrapper">
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+    </div>
+
+    <footer class="footer text-center">
+        &copy; 2019 Tiffin Management
+    </footer>
+
+    <script src="~/Assets/js/jquery.min.js"></script>
+    <script src="~/Assets/js/popper.min.js"></script>
+    <script src="~/Assets/js/bootstrap.min.js"></script>
+    <script src="~/Assets/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="~/Assets/js/waves.js"></script>
+    <script src="~/Assets/js/sidebarmenu.js"></script>
+    <script src="~/Assets/js/custom.min.js"></script>
+
+</body>
+</html>

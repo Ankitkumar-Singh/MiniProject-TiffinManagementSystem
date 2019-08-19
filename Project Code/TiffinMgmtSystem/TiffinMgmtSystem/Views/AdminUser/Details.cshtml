@@ -1,0 +1,80 @@
+﻿@model TiffinMgmtSystem.Models.UserDetail
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Users</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">@Html.ActionLink("Home", "Index", "AdminUser")</li>
+            <li class="breadcrumb-item active">User Details</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-xlg-3 col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <center class="m-t-30">
+                    <img src="~/Assets/images/user-img/vendor.png" class="img-circle" width="150" />
+                    <h4 class="card-title m-t-10">@Html.DisplayFor(model => model.FirstName)  @Html.DisplayFor(model => model.LastName)</h4>
+                    <h6 class="card-subtitle"> @Html.DisplayFor(model => model.UserType.Type)</h6>
+
+                </center>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 col-xlg-9 col-md-7">
+        <div class="card">
+            <div class="card-body">
+                <form class="form-horizontal form-material">
+                    <div class="form-group">
+                        <label class="col-md-12"> @Html.DisplayNameFor(model => model.FirstName)</label>
+                        <div class="col-md-12">
+                            @Html.DisplayFor(model => model.FirstName)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">  @Html.DisplayNameFor(model => model.LastName)</label>
+                        <div class="col-md-12">
+                            @Html.DisplayFor(model => model.LastName)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">Gender</label>
+                        <div class="col-md-12">
+                            @Html.DisplayFor(model => model.Gender.Name)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">  @Html.DisplayNameFor(model => model.PhoneNo)</label>
+                        <div class="col-md-12">
+                            @Html.DisplayFor(model => model.PhoneNo)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="example-email" class="col-md-12"> @Html.DisplayNameFor(model => model.Email)</label>
+                        <div class="col-md-12">
+                            @Html.DisplayFor(model => model.Email)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">  @Html.DisplayNameFor(model => model.UserType.Type)</label>
+                        <div class="col-md-12">
+                            @Html.DisplayFor(model => model.UserType.Type)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">  @Html.DisplayNameFor(model => model.Date)</label>
+                        <div class="col-md-12">
+                            @Html.DisplayFor(model => model.Date)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            @Html.ActionLink("Back", "Index", new object { }, new { @class = "btn btn-info" })
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+﻿@model TiffinMgmtSystem.Models.OrderDetail
+
+<script type="text/javascript">
+    function myFunction() {
+        var tiffinType = document.getElementById('tiffinType').value;
+        var extraRotiCount = document.getElementById('extraRotiCount').value;
+
+        if (tiffinType == "" || tiffinType == null) {
+            document.getElementById("error").innerHTML = "Please select tiffin type.";
+        }
+        else if (tiffinType == 2) {
+            var finalAmount = 40 + (extraRotiCount * 5);
+            document.getElementById("totalPrice").innerHTML = "Total price : " + finalAmount;
+        }
+        else {
+            var finalAmount = 50 + (extraRotiCount * 5);
+            document.getElementById("totalPrice").innerHTML = "Total price : " + finalAmount;
+        }
+    }
+</script>
+@using (Html.BeginForm())
+{
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Place Order</h3>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active">Place Order</li>
+            </ol>
+        </div>
+    </div>
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header bg-info">
+                    <h4 class="m-b-0 text-white">Place Order</h4>
+                </div>
+                <div class="card-body">
+                    <form action="#">
+                        <div class="form-body">
+                            <div class="row p-t-20">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">@Html.LabelFor(model => model.VendorName)</label>
+                                        @Html.DropDownList("VendorName", null, "Select Vendor", htmlAttributes: new { @class = "form-control custom-select" })
+                                        @Html.ValidationMessageFor(model => model.VendorName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">
+                                            @Html.LabelFor(model => model.TiffinTypeId, "Tiffin Type")
+                                        </label>
+                                        @Html.DropDownList("TiffinTypeId", null, "Select tiffin type", htmlAttributes: new { @class = "form-control custom-select", id = "tiffinType" })
+                                        @Html.ValidationMessageFor(model => model.TiffinTypeId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>
+                                            @Html.LabelFor(model => model.ExtraId, "Extras")
+                                        </label>
+                                        @Html.DropDownList("ExtraId", null, "Select option", htmlAttributes: new { @class = "form-control custom-select" })
+                                        @Html.ValidationMessageFor(model => model.ExtraId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>
+                                            @Html.LabelFor(model => model.Count)
+                                        </label>
+                                        @Html.EditorFor(model => model.Count, new { htmlAttributes = new { @class = "form-control ", id = "extraRotiCount" } })
+                                        @Html.ValidationMessageFor(model => model.Count, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <button type="button" onclick="myFunction()" class="btn btn-outline-info">Calculate Price</button>
+                                    </div>
+                                </div>
+                                <div id="error" class="col-md-6 text-danger font-16 font-weight-bold">
+                                    <div id="totalPrice" class="text-dark"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="reset" class="btn btn-inverse">Cancel</button>
+                            <button type="submit" class="btn btn-info"> <i class="fa fa-check"></i> Order</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}
