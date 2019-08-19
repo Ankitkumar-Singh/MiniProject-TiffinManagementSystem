@@ -106,60 +106,20 @@
     <Content Include="Assets\css\bootstrap.min.css" />
     <Content Include="Assets\css\colors\default.css" />
     <Content Include="Assets\css\font-awesome.min.css" />
-    <Content Include="Assets\css\icons\font-awesome\css\font-awesome.css" />
-    <Content Include="Assets\css\icons\font-awesome\old\css\font-awesome.css" />
-    <Content Include="Assets\css\pages\bootstrap-switch.css" />
-    <Content Include="Assets\css\pages\breadcrumb-page.css" />
-    <Content Include="Assets\css\pages\card-page.css" />
-    <Content Include="Assets\css\pages\chat-app-page.css" />
-    <Content Include="Assets\css\pages\common.css" />
-    <Content Include="Assets\css\pages\contact-app-page.css" />
-    <Content Include="Assets\css\pages\dashboard1.css" />
-    <Content Include="Assets\css\pages\easy-pie-chart.css" />
     <Content Include="Assets\css\pages\error-pages.css" />
-    <Content Include="Assets\css\pages\file-upload.css" />
-    <Content Include="Assets\css\pages\float-chart.css" />
-    <Content Include="Assets\css\pages\floating-label.css" />
-    <Content Include="Assets\css\pages\footable-page.css" />
-    <Content Include="Assets\css\pages\form-icheck.css" />
-    <Content Include="Assets\css\pages\form-pages.css" />
-    <Content Include="Assets\css\pages\google-vector-map.css" />
-    <Content Include="Assets\css\pages\icon-page.css" />
-    <Content Include="Assets\css\pages\inbox.css" />
-    <Content Include="Assets\css\pages\login-register-lock.css" />
-    <Content Include="Assets\css\pages\other-pages.css" />
-    <Content Include="Assets\css\pages\pages.css" />
-    <Content Include="Assets\css\pages\pagination.css" />
-    <Content Include="Assets\css\pages\perfect-scrollbar.css" />
-    <Content Include="Assets\css\pages\pricing-page.css" />
-    <Content Include="Assets\css\pages\progressbar-page.css" />
-    <Content Include="Assets\css\pages\ribbon-page.css" />
-    <Content Include="Assets\css\pages\stylish-tooltip.css" />
-    <Content Include="Assets\css\pages\tab-page.css" />
-    <Content Include="Assets\css\pages\table-pages.css" />
-    <Content Include="Assets\css\pages\timeline-vertical-horizontal.css" />
-    <Content Include="Assets\css\pages\ui-bootstrap-page.css" />
-    <Content Include="Assets\css\pages\user-card.css" />
-    <Content Include="Assets\css\pages\widget-page.css" />
     <Content Include="Assets\css\spinners.css" />
-    <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\css\style.min.css" />
     <Content Include="Assets\fonts\font-awesome\fa-brands-400.svg" />
     <Content Include="Assets\fonts\font-awesome\fa-regular-400.svg" />
     <Content Include="Assets\fonts\font-awesome\fa-solid-900.svg" />
     <Content Include="Assets\fonts\font-awesome\fontawesome-webfont.svg" />
     <Content Include="Assets\fonts\fontawesome-webfont.svg" />
-    <Content Include="Assets\images\user-img\admin.png" />
-    <Content Include="Assets\images\user-img\admin2.png" />
-    <Content Include="Assets\images\user-img\admin3.png" />
-    <Content Include="Assets\images\user-img\user.png" />
-    <Content Include="Assets\images\user-img\vendor.png" />
+    <Content Include="Assets\images\admin.png" />
+    <Content Include="Assets\images\user.png" />
     <Content Include="Assets\js\bootstrap.min.js" />
-    <Content Include="Assets\js\custom.js" />
-    <Content Include="Assets\js\custom.min.js" />
-    <Content Include="Assets\js\dashboard1.js" />
-    <Content Include="Assets\js\flot-data.js" />
     <Content Include="Assets\js\jquery.min.js" />
-    <Content Include="Assets\js\jquery.slimscroll.js" />
+    <Content Include="Assets\js\jquery.validate.min.js" />
+    <Content Include="Assets\js\jquery.validate.unobtrusive.min.js" />
     <Content Include="Assets\js\perfect-scrollbar.jquery.min.js" />
     <Content Include="Assets\js\popper.min.js" />
     <Content Include="Assets\js\sidebarmenu.js" />
@@ -176,7 +136,7 @@
       <DependentUpon>UserDataModel.edmx</DependentUpon>
       <LastGenOutput>UserDataModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\Script.js" />
+    <Content Include="Assets\js\Script.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -226,7 +186,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <Content Include="Assets\js\prepros-6.config" />
     <EntityDeploy Include="Models\UserDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>UserDataModel.Designer.cs</LastGenOutput>
@@ -276,6 +235,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -285,7 +245,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\lib\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

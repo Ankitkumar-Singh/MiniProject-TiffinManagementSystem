@@ -6,11 +6,8 @@
 
 <html>
 <head>
-    <link href="~/Assets/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Assets/css/style.css" rel="stylesheet" />
-    <link href="~/Assets/css/spinners.css" rel="stylesheet" />
-    <link href="~/Assets/css/animate.css" rel="stylesheet" />
+    <link href="~/Assets/css/style.min.css" rel="stylesheet" />
     <title>Sign Up</title>
 </head>
 <body>
@@ -81,7 +78,7 @@
                     </div>
                 }
                 <div>
-                    @Html.ActionLink("Dont't have account click here to signup?", "SignUp", null, htmlAttributes: new { @class = "ForgetPwd" })
+                    @Html.ActionLink("Already have an account. Sign in here!", "SignIn", null, htmlAttributes: new { @class = "ForgetPwd" })
                 </div>
             </div>
         </div>

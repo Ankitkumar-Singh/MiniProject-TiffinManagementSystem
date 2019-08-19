@@ -24,10 +24,12 @@ namespace TiffinMgmtSystem.Models
 
         [Display(Name = "First Name")]
         [Required(ErrorMessage = "First name cannot be empty")]
+        [RegularExpression("^([a-zA-Z]+)$", ErrorMessage = "First name contains only alphabets")]
         public string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
         [Required(ErrorMessage = "Last name cannot be empty")]
+        [RegularExpression("^([a-zA-Z]+)$", ErrorMessage = "Last name contains only alphabets")]
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Please select a gender")]
@@ -35,15 +37,17 @@ namespace TiffinMgmtSystem.Models
 
         [Display(Name = "Phone")]
         [Required(ErrorMessage = "Phone cannot be empty")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?([0-9]{3})?([0-9]{4})$", ErrorMessage = "Phone contains only numbers and 10 digits")]
         public string PhoneNo { get; set; }
 
         [Required(ErrorMessage = "Email cannot be empty")]
         [DataType(DataType.EmailAddress, ErrorMessage = "Invalid email address")]
+        [RegularExpression(@"^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$", ErrorMessage = "Email address should be in the format abc@abc.test.com")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Password cannot be empty")]
         [DataType(DataType.Password, ErrorMessage = "Invalid password")]
-        [MaxLength(30, ErrorMessage = "Password should contain only 30 characters")]
+        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,16}$", ErrorMessage = "Password contains one special character, one uppercase, one lowercase, minimum 8 and maximum 16 characters")]
         public string Password { get; set; }
 
         public int UserTypeId { get; set; }

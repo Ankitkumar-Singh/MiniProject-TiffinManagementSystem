@@ -6,27 +6,37 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using TiffinMgmtSystem.Models;
+using PagedList;
+using System.Web.Security;
 
 namespace TiffinSystem.Controllers
 {
     [Authorize]
     public class UserController : Controller
     {
+        #region "Database"
         private DBContext db = new DBContext();
+        #endregion
 
-        // GET: OrderDetails/Details/5
+        #region "Users order details"
         /// <summary>Detailses the specified identifier.</summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public ActionResult Details(int ? id)
+        public ActionResult Details(int? id, int? page)
         {
-            var orderDetails = db.OrderDetails.Include(o => o.Extra).Include(o => o.TiffinDetail).Include(o => o.UserDetail);
-            if (id == null)
+            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "3")
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                var orderDetails = db.OrderDetails.Include(o => o.Extra).Include(o => o.TiffinDetail).Include(o => o.UserDetail);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                List<OrderDetail> orderDetail = db.OrderDetails.Where(u => u.UserId == id).OrderByDescending(u => u.OrderDate).ToList();
+                return View(orderDetail.ToPagedList(page ?? 1, 5));
             }
-            List<OrderDetail> orderDetail = db.OrderDetails.Where(u => u.UserId == id).OrderBy(u => u.OrderDate).ToList();
-            return View(orderDetail);
+            FormsAuthentication.SignOut();
+            Session.Clear();
+            return RedirectToAction("SignIn", "Auth");
         }
 
         /// <summary>Detailses the specified from.</summary>
@@ -34,31 +44,44 @@ namespace TiffinSystem.Controllers
         /// <param name="To">To.</param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Details(DateTime? From, DateTime? To)
+        public ActionResult Details(DateTime? From, DateTime? To, int? page)
         {
-            var orders = db.OrderDetails.AsQueryable();
-
-            if (From == null && To == null)
+            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "3")
             {
-                return View(orders.Include(e => e.UserDetail).ToList());
-            }
-            else
-            {
-                orders = orders.Where(e => e.OrderDate >= From && e.OrderDate <= To);
+                var orders = db.OrderDetails.AsQueryable();
 
-                return View(orders.ToList());
+                if (From == null && To == null)
+                {
+                    return View(orders.Include(e => e.UserDetail).ToList());
+                }
+                else
+                {
+                    orders = orders.Where(e => e.OrderDate >= From && e.OrderDate <= To);
+                    return View(orders.ToList().ToPagedList(page ?? 1, 5));
+                }
             }
+            FormsAuthentication.SignOut();
+            Session.Clear();
+            return RedirectToAction("SignIn", "Auth");
         }
-        // GET: OrderDetails/Create
+        #endregion
+
+        #region "Place order"
         /// <summary>Creates this instance.</summary>
         /// <returns></returns>
         public ActionResult Create()
         {
-            var orderDetails = db.OrderDetails.Include(o => o.Extra).Include(o => o.TiffinDetail).Include(o => o.UserDetail);
-            ViewBag.VendorName = new SelectList(db.UserDetails.Where(u => u.UserTypeId == 2),"FirstName","FirstName");
-            ViewBag.ExtraId = new SelectList(db.Extras, "ExtraId", "ExtraName");
-            ViewBag.TiffinTypeId = new SelectList(db.TiffinDetails, "Id", "Type");
-            return View();
+            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "3")
+            {
+                var orderDetails = db.OrderDetails.Include(o => o.Extra).Include(o => o.TiffinDetail).Include(o => o.UserDetail);
+                ViewBag.VendorName = new SelectList(db.UserDetails.Where(u => u.UserTypeId == 2), "FirstName", "FirstName");
+                ViewBag.ExtraId = new SelectList(db.Extras, "ExtraId", "ExtraName");
+                ViewBag.TiffinTypeId = new SelectList(db.TiffinDetails, "Id", "Type");
+                return View();
+            }
+            FormsAuthentication.SignOut();
+            Session.Clear();
+            return RedirectToAction("SignIn", "Auth");
         }
 
         /// <summary>Creates the specified order detail.</summary>
@@ -68,27 +91,31 @@ namespace TiffinSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "OrderId,TiffinTypeId,VendorName,ExtraId,Total,Count")] OrderDetail orderDetail)
         {
-            var orderDetails = db.OrderDetails.Include(o => o.Extra).Include(o => o.TiffinDetail).Include(o => o.UserDetail);
-            if (ModelState.IsValid)
+            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "3")
             {
-                var userEmail = Session["UserEmail"].ToString();
-                UserDetail user = db.UserDetails.Single(x => x.Email == userEmail);
-                TiffinDetail tiffin = db.TiffinDetails.Single(t => t.Id == orderDetail.TiffinTypeId);
-                orderDetail.OrderDate = DateTime.Now;
-                orderDetail.UserId = user.UserId;
-                orderDetail.Total = (tiffin.Cost + (Convert.ToInt16(orderDetail.Count * 5)));
-                db.OrderDetails.Add(orderDetail);
-                db.SaveChanges();
-                return RedirectToAction("Details",new { id=user.UserId });
+                var orderDetails = db.OrderDetails.Include(o => o.Extra).Include(o => o.TiffinDetail).Include(o => o.UserDetail);
+                if (ModelState.IsValid)
+                {
+                    TiffinDetail tiffin = db.TiffinDetails.Single(t => t.Id == orderDetail.TiffinTypeId);
+                    orderDetail.OrderDate = DateTime.Now;
+                    orderDetail.UserId = Convert.ToInt32(Session["UserId"]);
+                    orderDetail.Total = (tiffin.Cost + (Convert.ToInt16(orderDetail.Count * 5)));
+                    db.OrderDetails.Add(orderDetail);
+                    db.SaveChanges();
+                    return RedirectToAction("Details", new { id = Convert.ToInt32(Session["UserId"]) });
+                }
+                ViewBag.VendorName = new SelectList(db.UserDetails.Where(u => u.UserTypeId == 2), "FirstName", "FirstName", orderDetail.VendorName);
+                ViewBag.ExtraId = new SelectList(db.Extras, "ExtraId", "ExtraName", orderDetail.ExtraId);
+                ViewBag.TiffinTypeId = new SelectList(db.TiffinDetails, "Id", "Type", orderDetail.TiffinTypeId);
+                return View(orderDetail);
             }
-            ViewBag.VendorName = new SelectList(db.UserDetails.Where(u => u.UserTypeId == 2), "FirstName", "FirstName", orderDetail.VendorName);
-            //ViewBag.VendorName = new SelectList(db.UserDetails, "UserId", "FirstName", orderDetail.VendorName);
-            ViewBag.ExtraId = new SelectList(db.Extras, "ExtraId", "ExtraName", orderDetail.ExtraId);
-            ViewBag.TiffinTypeId = new SelectList(db.TiffinDetails, "Id", "Type", orderDetail.TiffinTypeId);
-            return View(orderDetail);
+            FormsAuthentication.SignOut();
+            Session.Clear();
+            return RedirectToAction("SignIn", "Auth");
         }
+        #endregion
 
-
+        #region "Dispose"
         /// <summary>Releases unmanaged resources and optionally releases managed resources.</summary>
         /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
         protected override void Dispose(bool disposing)
@@ -99,5 +126,6 @@ namespace TiffinSystem.Controllers
             }
             base.Dispose(disposing);
         }
+        #endregion
     }
 }

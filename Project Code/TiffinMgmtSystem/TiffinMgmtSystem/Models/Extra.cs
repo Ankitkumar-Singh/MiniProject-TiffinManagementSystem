@@ -24,6 +24,7 @@ namespace TiffinMgmtSystem.Models
         public int ExtraId { get; set; }
 
         [Required]
+        [Display(Name = "Extras")]
         public string ExtraName { get; set; }
         public int Cost { get; set; }
     

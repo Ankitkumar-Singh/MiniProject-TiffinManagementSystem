@@ -33,8 +33,8 @@ namespace TiffinMgmtSystem.Models
         [Display(Name = "Price")]
         public int Total { get; set; }
 
-        [Required(ErrorMessage = "Count cannot be empty")]
-        [Range(1,10)]
+        [Required(ErrorMessage = "Count cannot be empty enter in between(0,10)")]
+        [Range(0,10)]
         [Display(Name = "Extra Count")]
         public Nullable<short> Count { get; set; }
 

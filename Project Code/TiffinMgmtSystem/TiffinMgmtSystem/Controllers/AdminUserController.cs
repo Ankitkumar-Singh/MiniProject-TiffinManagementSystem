@@ -12,9 +12,12 @@ namespace TiffinMgmtSystem.Controllers
     [Authorize]
     public class AdminUserController : Controller
     {
+        #region "Database"
         /// <summary>The database</summary>
         private DBContext db = new DBContext();
+        #endregion
 
+        #region "View List of Users"
         /// <summary>Indexes the specified search.</summary>
         /// <param name="search">The search.</param>
         /// <param name="page">The page.</param>
@@ -35,7 +38,9 @@ namespace TiffinMgmtSystem.Controllers
                 return RedirectToAction("SignIn", "Auth");
             }
         }
+        #endregion
 
+        #region "View User Details"
         /// <summary>Detailses the specified identifier.</summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
@@ -61,7 +66,9 @@ namespace TiffinMgmtSystem.Controllers
                 return RedirectToAction("SignIn", "Auth");
             }
         }
+        #endregion
 
+        #region "Delete User"
         /// <summary>Deletes the specified identifier.</summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
@@ -109,7 +116,9 @@ namespace TiffinMgmtSystem.Controllers
                 return RedirectToAction("SignIn", "Auth");
             }
         }
+        #endregion
 
+        #region "Dispose"
         /// <summary>Releases unmanaged resources and optionally releases managed resources.</summary>
         /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
         protected override void Dispose(bool disposing)
@@ -120,5 +129,6 @@ namespace TiffinMgmtSystem.Controllers
             }
             base.Dispose(disposing);
         }
+        #endregion
     }
 }

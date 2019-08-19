@@ -3,6 +3,6 @@
         <a class="waves-effect waves-dark" href="@Url.Action("Create", "User")" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Place Order</span></a>
     </li>
     <li>
-        <a class="waves-effect waves-dark" href="@Url.Action("Details", "User")" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Users</span></a>
+        <a class="waves-effect waves-dark" href="@Url.Action("Details", "User", new { id = Session["UserId"] })" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">My Order</span></a>
     </li>
 </ul>

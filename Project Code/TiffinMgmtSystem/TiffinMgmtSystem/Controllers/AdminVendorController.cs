@@ -13,9 +13,12 @@ namespace TiffinMgmtSystem.Controllers
     [Authorize]
     public class AdminVendorController : Controller
     {
+        #region "Database"
         /// <summary>The database</summary>
         private DBContext db = new DBContext();
+        #endregion
 
+        #region "View list of vendors"
         /// <summary>Indexes this instance.</summary>
         /// <returns></returns>
         public ActionResult Index(string search, int? page)
@@ -34,7 +37,9 @@ namespace TiffinMgmtSystem.Controllers
                 return RedirectToAction("SignIn", "Auth");
             }
         }
+        #endregion
 
+        #region "View vendor details"
         /// <summary>Detailses the specified identifier.</summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
@@ -60,7 +65,9 @@ namespace TiffinMgmtSystem.Controllers
                 return RedirectToAction("SignIn", "Auth");
             }
         }
+        #endregion
 
+        #region "Add a new vendor"
         /// <summary>Creates this instance.</summary>
         /// <returns></returns>
         public ActionResult Create()
@@ -105,7 +112,9 @@ namespace TiffinMgmtSystem.Controllers
                 return RedirectToAction("SignIn", "Auth");
             }
         }
+        #endregion
 
+        #region "Edit vendor details"
         /// <summary>Edits the specified identifier.</summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
@@ -162,7 +171,9 @@ namespace TiffinMgmtSystem.Controllers
                 return RedirectToAction("SignIn", "Auth");
             }
         }
+        #endregion
 
+        #region "Delete vendor"
         /// <summary>Deletes the specified identifier.</summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
@@ -210,7 +221,9 @@ namespace TiffinMgmtSystem.Controllers
                 return RedirectToAction("SignIn", "Auth");
             }
         }
+        #endregion
 
+        #region "Dispose"
         /// <summary>Releases unmanaged resources and optionally releases managed resources.</summary>
         /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
         protected override void Dispose(bool disposing)
@@ -221,5 +234,6 @@ namespace TiffinMgmtSystem.Controllers
             }
             base.Dispose(disposing);
         }
+        #endregion
     }
 }

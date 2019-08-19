@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <title>Tiffin Management</title>
     <link href="~/Assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Assets/css/style.css" rel="stylesheet" />
+    <link href="~/Assets/css/style.min.css" rel="stylesheet" />
     <link href="~/Assets/css/colors/default.css" id="theme" rel="stylesheet" />
     <link href="~/Assets/css/font-awesome.min.css" rel="stylesheet" />
 </head>
@@ -48,7 +48,7 @@
                             <ul class="dropdown-user">
                                 <li>
                                     <div class="dw-user-box text-center">
-                                        <div class="u-img"><img src="~/Assets/images/user-img/admin.png" alt="user"></div>
+                                        <div class="u-img"><img src="~/Assets/images/admin.png" alt="user"></div>
                                         <div class="u-text">
                                             <h4 class="my-2">@Session["UserEmail"]</h4>
                                             @if (Session["UserRole"].ToString() == "1")
@@ -106,6 +106,8 @@
     </footer>
 
     <script src="~/Assets/js/jquery.min.js"></script>
+    <script src="~/Assets/js/jquery.validate.min.js"></script>
+    <script src="~/Assets/js/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Assets/js/popper.min.js"></script>
     <script src="~/Assets/js/bootstrap.min.js"></script>
     <script src="~/Assets/js/perfect-scrollbar.jquery.min.js"></script>

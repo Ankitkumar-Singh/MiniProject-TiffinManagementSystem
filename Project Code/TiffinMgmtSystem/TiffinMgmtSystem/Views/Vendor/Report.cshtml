@@ -20,7 +20,9 @@
                     @using (Html.BeginForm("Report", "Vendor", FormMethod.Post))
                     {
                         <div class="row mx-auto px-3">
+                            <text class="mt-3 font-weight-bold">From Date : </text>
                             @Html.TextBox("StartDate", null, new { @class = "form-control col-md-3 m-2", @type = "date", max = DateTime.Now.ToString("yyyy-MM-dd") })
+                            <text class="mt-3 font-weight-bold">To Date : </text>
                             @Html.TextBox("EndDate", null, new { @class = "form-control col-md-3 m-2", @type = "date", max = DateTime.Now.ToString("yyyy-MM-dd") })
                             <input type="submit" Value="Generate Report" class="btn btn-success m-2" />
                         </div>

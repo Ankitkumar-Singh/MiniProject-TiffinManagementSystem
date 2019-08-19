@@ -8,6 +8,7 @@ namespace TiffinMgmtSystem.Controllers
 {
     public class AuthController : Controller
     {
+        #region "Signin authentication"
         /// <summary>Signs the in.</summary>
         /// <returns></returns
         public ActionResult SignIn()
@@ -43,8 +44,9 @@ namespace TiffinMgmtSystem.Controllers
                         Session["UserName"] = user.FirstName;
                         return RedirectToAction("OrderDetails", "Vendor");
                     }
-                    else if(user.UserTypeId == 3)
+                    else if (user.UserTypeId == 3)
                     {
+                        Session["UserId"] = user.UserId;
                         return RedirectToAction("Create", "User");
                     }
                     else
@@ -56,7 +58,9 @@ namespace TiffinMgmtSystem.Controllers
             ModelState.AddModelError("", "Invalid email and password");
             return View();
         }
+        #endregion
 
+        #region "Signup authentication"
         /// <summary>Signs up.</summary>
         /// <returns></returns>
         [HttpGet]
@@ -85,7 +89,9 @@ namespace TiffinMgmtSystem.Controllers
             }
             return View();
         }
+        #endregion
 
+        #region "Sign out"
         /// <summary>Represents an event that is raised when the sign-out operation is complete.</summary>
         /// <returns></returns>
         public ActionResult SignOut()
@@ -93,13 +99,15 @@ namespace TiffinMgmtSystem.Controllers
             Session.Clear();
             return RedirectToAction("SignIn");
         }
+        #endregion
 
+        #region "Error"
         /// <summary>Errors this instance.</summary>
         /// <returns></returns>
         public ActionResult Error()
         {
             return View();
         }
-
+        #endregion
     }
 }

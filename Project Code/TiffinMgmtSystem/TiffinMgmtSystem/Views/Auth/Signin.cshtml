@@ -7,7 +7,7 @@
 <html>
 <head>
     <link href="~/Assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Assets/css/style.css" rel="stylesheet" />
+    <link href="~/Assets/css/style.min.css" rel="stylesheet" />
     <title>Sign In</title>
 </head>
 <body>
@@ -15,7 +15,7 @@
     <div class="container login-container">
         <div class="row">
             <div class="col-md-6 mx-auto login-form-1">
-                <h3 class="font-weight-bold text-themecolor">Tiffin Mangement</h3>
+                <h3 class="font-weight-bold text-themecolor">Tiffin Management</h3>
                 @using (Html.BeginForm())
                 {
                     @Html.ValidationSummary(true, "", new { @class = "text-danger font-weight-bold font-16 noListStyle" })
@@ -38,9 +38,8 @@
                     </div>
                 }
                 <div>
-                    @Html.ActionLink("Dont't have account click here to signup?", "SignUp", null, htmlAttributes: new { @class = "ForgetPwd" })
+                    @Html.ActionLink("Don't have account? Click here to signup.", "SignUp", null, htmlAttributes: new { @class = "ForgetPwd" })
                 </div>
-
             </div>
         </div>
     </div>
