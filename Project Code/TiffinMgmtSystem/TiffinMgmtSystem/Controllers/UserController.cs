@@ -34,6 +34,7 @@ namespace TiffinSystem.Controllers
                 List<OrderDetail> orderDetail = db.OrderDetails.Where(u => u.UserId == id).OrderByDescending(u => u.OrderDate).ToList();
                 return View(orderDetail.ToPagedList(page ?? 1, 5));
             }
+            Response.Redirect("<script>alert('Session logged out. Sign in again');</script>");
             FormsAuthentication.SignOut();
             Session.Clear();
             return RedirectToAction("SignIn", "Auth");
@@ -60,6 +61,7 @@ namespace TiffinSystem.Controllers
                     return View(orders.ToList().ToPagedList(page ?? 1, 5));
                 }
             }
+            Response.Redirect("<script>alert('Session logged out. Sign in again');</script>");
             FormsAuthentication.SignOut();
             Session.Clear();
             return RedirectToAction("SignIn", "Auth");
@@ -79,6 +81,7 @@ namespace TiffinSystem.Controllers
                 ViewBag.TiffinTypeId = new SelectList(db.TiffinDetails, "Id", "Type");
                 return View();
             }
+            Response.Redirect("<script>alert('Session logged out. Sign in again');</script>");
             FormsAuthentication.SignOut();
             Session.Clear();
             return RedirectToAction("SignIn", "Auth");
@@ -109,6 +112,7 @@ namespace TiffinSystem.Controllers
                 ViewBag.TiffinTypeId = new SelectList(db.TiffinDetails, "Id", "Type", orderDetail.TiffinTypeId);
                 return View(orderDetail);
             }
+            Response.Redirect("<script>alert('Session logged out. Sign in again');</script>");
             FormsAuthentication.SignOut();
             Session.Clear();
             return RedirectToAction("SignIn", "Auth");

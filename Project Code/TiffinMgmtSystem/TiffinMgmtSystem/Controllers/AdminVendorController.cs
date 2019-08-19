@@ -32,6 +32,7 @@ namespace TiffinMgmtSystem.Controllers
             }
             else
             {
+                Response.Redirect("<script>alert('Session logged out. Sign in again');</script>");
                 FormsAuthentication.SignOut();
                 Session.Clear();
                 return RedirectToAction("SignIn", "Auth");
@@ -60,6 +61,7 @@ namespace TiffinMgmtSystem.Controllers
             }
             else
             {
+                Response.Redirect("<script>alert('Session logged out. Sign in again');</script>");
                 FormsAuthentication.SignOut();
                 Session.Clear();
                 return RedirectToAction("SignIn", "Auth");
@@ -79,6 +81,7 @@ namespace TiffinMgmtSystem.Controllers
             }
             else
             {
+                Response.Redirect("<script>alert('Session logged out. Sign in again');</script>");
                 FormsAuthentication.SignOut();
                 Session.Clear();
                 return RedirectToAction("SignIn", "Auth");
@@ -107,6 +110,7 @@ namespace TiffinMgmtSystem.Controllers
             }
             else
             {
+                Response.Redirect("<script>alert('Session logged out. Sign in again');</script>");
                 FormsAuthentication.SignOut();
                 Session.Clear();
                 return RedirectToAction("SignIn", "Auth");
@@ -137,6 +141,7 @@ namespace TiffinMgmtSystem.Controllers
             }
             else
             {
+                Response.Redirect("<script>alert('Session logged out. Sign in again');</script>");
                 FormsAuthentication.SignOut();
                 Session.Clear();
                 return RedirectToAction("SignIn", "Auth");
@@ -166,6 +171,7 @@ namespace TiffinMgmtSystem.Controllers
             }
             else
             {
+                Response.Redirect("<script>alert('Session logged out. Sign in again');</script>");
                 FormsAuthentication.SignOut();
                 Session.Clear();
                 return RedirectToAction("SignIn", "Auth");
@@ -194,6 +200,7 @@ namespace TiffinMgmtSystem.Controllers
             }
             else
             {
+                Response.Redirect("<script>alert('Session logged out. Sign in again');</script>");
                 FormsAuthentication.SignOut();
                 Session.Clear();
                 return RedirectToAction("SignIn", "Auth");
@@ -216,6 +223,7 @@ namespace TiffinMgmtSystem.Controllers
             }
             else
             {
+                Response.Redirect("<script>alert('Session logged out. Sign in again');</script>");
                 FormsAuthentication.SignOut();
                 Session.Clear();
                 return RedirectToAction("SignIn", "Auth");
