@@ -27,7 +27,7 @@ namespace TiffinSystem.Controllers
                 ViewBag.OrderCount = orders.Count();
                 return View(orders.Where(x => x.UserDetail.FirstName.StartsWith(search) || x.UserDetail.LastName.StartsWith(search) || search == null).ToList().ToPagedList(page ?? 1, 5));
             }
-            Response.Redirect("<script>alert('Session logged out. Sign in again');</script>");
+            Response.Write("<script>alert('Session logged out. Sign in again');</script>");
             FormsAuthentication.SignOut();
             Session.Clear();
             return RedirectToAction("SignIn", "Auth");
@@ -45,7 +45,7 @@ namespace TiffinSystem.Controllers
                 var orders = db.OrderDetails.Include(e => e.UserDetail).Where(e => e.VendorName == vendorName).OrderByDescending(u => u.OrderDate);
                 return View(orders.Where(x => x.UserDetail.FirstName.StartsWith(search) || x.UserDetail.LastName.StartsWith(search) || search == null).ToList().ToPagedList(page ?? 1, 5));
             }
-            Response.Redirect("<script>alert('Session logged out. Sign in again');</script>");
+            Response.Write("<script>alert('Session logged out. Sign in again');</script>");
             FormsAuthentication.SignOut();
             Session.Clear();
             return RedirectToAction("SignIn", "Auth");
@@ -72,7 +72,7 @@ namespace TiffinSystem.Controllers
                     return View(orders.ToList().ToPagedList(page ?? 1, 5));
                 }
             }
-            Response.Redirect("<script>alert('Session logged out. Sign in again');</script>");
+            Response.Write("<script>alert('Session logged out. Sign in again');</script>");
             FormsAuthentication.SignOut();
             Session.Clear();
             return RedirectToAction("SignIn", "Auth");
