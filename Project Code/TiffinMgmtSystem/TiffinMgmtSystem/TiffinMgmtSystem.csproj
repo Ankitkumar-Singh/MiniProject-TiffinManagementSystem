@@ -176,6 +176,7 @@
       <DependentUpon>UserDataModel.edmx</DependentUpon>
       <LastGenOutput>UserDataModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\Script.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
