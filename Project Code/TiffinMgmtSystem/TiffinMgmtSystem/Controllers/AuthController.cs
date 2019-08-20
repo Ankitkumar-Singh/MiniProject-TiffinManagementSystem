@@ -96,7 +96,9 @@ namespace TiffinMgmtSystem.Controllers
         /// <returns></returns>
         public ActionResult SignOut()
         {
-            Session.Clear();
+            FormsAuthentication.SignOut();
+            HttpContext.Session.Abandon();
+            HttpContext.Session.Clear();
             return RedirectToAction("SignIn");
         }
         #endregion

@@ -24,7 +24,7 @@ namespace TiffinSystem.Controllers
         /// <returns></returns>
         public ActionResult Details(int? id, int? page)
         {
-            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "3")
+            if (Session["UserRole"] != null && Session["UserRole"].ToString() == "3" && Convert.ToInt32(Session["UserId"]) == id)
             {
                 var orderDetails = db.OrderDetails.Include(o => o.Extra).Include(o => o.TiffinDetail).Include(o => o.UserDetail);
                 if (id == null)
@@ -50,14 +50,14 @@ namespace TiffinSystem.Controllers
             if (Session["UserRole"] != null && Session["UserRole"].ToString() == "3")
             {
                 var orders = db.OrderDetails.AsQueryable();
-
+                var id = Convert.ToInt32(Session["UserId"]);
                 if (From == null && To == null)
                 {
-                    return View(orders.Include(e => e.UserDetail).ToList());
+                    return View(orders.Include(e => e.UserDetail).Where(x => x.UserId == id).OrderByDescending(u => u.OrderDate).ToList().ToPagedList(page ?? 1, 5));
                 }
                 else
                 {
-                    orders = orders.Where(e => e.OrderDate >= From && e.OrderDate <= To);
+                    orders = orders.Where(e => e.OrderDate >= From && e.OrderDate <= To && e.UserId == id);
                     return View(orders.ToList().ToPagedList(page ?? 1, 5));
                 }
             }
