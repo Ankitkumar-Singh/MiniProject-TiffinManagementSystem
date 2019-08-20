@@ -2,7 +2,7 @@
 /******************* 
 Global Styles 
 *******************/
-@import url(../scss/icons/font-awesome/css/font-awesome.min.css);
+@import url(../css/font-awesome.min.css);
 @import url(../css/spinners.css);
 @import url(../css/animate.css);
 
@@ -32,18 +32,18 @@ a {
     color: #20aee3;
 }
 
-a:hover,
-a:focus {
-    text-decoration: none;
-}
+    a:hover,
+    a:focus {
+        text-decoration: none;
+    }
 
-a.link {
-    color: #455a64;
-}
+    a.link {
+        color: #455a64;
+    }
 
-a.link:hover, a.link:focus {
-    color: #20aee3;
-}
+        a.link:hover, a.link:focus {
+            color: #20aee3;
+        }
 
 .img-responsive {
     width: 100%;
@@ -130,23 +130,6 @@ html body .db {
 .no-wrap td,
 .no-wrap th {
     white-space: nowrap;
-}
-
-/*******************
-Blockquote
-*******************/
-html body blockquote {
-    border-left: 5px solid #20aee3;
-    border: 1px solid rgba(120, 130, 140, 0.13);
-    padding: 15px;
-}
-
-.clear {
-    clear: both;
-}
-
-ol li {
-    margin: 5px 0;
 }
 
 /*******************
@@ -1380,44 +1363,6 @@ When click on sidebar toggler and also for tablet
                     text-decoration: none;
                 }
 
-.search-box .app-search {
-    position: absolute;
-    margin: 0px;
-    display: block;
-    z-index: 110;
-    width: 100%;
-    top: -1px;
-    -webkit-box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.2);
-    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.2);
-    display: none;
-    left: 0px;
-}
-
-    .search-box .app-search input {
-        width: 100.5%;
-        padding: 25px 40px 25px 20px;
-        border-radius: 0px;
-        font-size: 17px;
-        -webkit-transition: 0.5s ease-in;
-        -o-transition: 0.5s ease-in;
-        transition: 0.5s ease-in;
-    }
-
-        .search-box .app-search input:focus {
-            border-color: #ffffff;
-        }
-
-    .search-box .app-search .srh-btn {
-        position: absolute;
-        top: 23px;
-        cursor: pointer;
-        background: #ffffff;
-        width: 15px;
-        height: 15px;
-        right: 20px;
-        font-size: 14px;
-    }
-
 .mini-sidebar .top-navbar .navbar-header {
     width: 70px;
     text-align: center;
@@ -1431,45 +1376,6 @@ When click on sidebar toggler and also for tablet
     right: 0;
     margin: 0 auto;
 }
-
-/*******************
-Notify
-*******************/
-.notify {
-    position: relative;
-    top: -28px;
-    right: -7px;
-}
-
-    .notify .heartbit {
-        position: absolute;
-        top: -20px;
-        right: -4px;
-        height: 25px;
-        width: 25px;
-        z-index: 10;
-        border: 5px solid #ff5c6c;
-        border-radius: 70px;
-        -moz-animation: heartbit 1s ease-out;
-        -moz-animation-iteration-count: infinite;
-        -o-animation: heartbit 1s ease-out;
-        -o-animation-iteration-count: infinite;
-        -webkit-animation: heartbit 1s ease-out;
-        -webkit-animation-iteration-count: infinite;
-        animation-iteration-count: infinite;
-    }
-
-    .notify .point {
-        width: 6px;
-        height: 6px;
-        -webkit-border-radius: 30px;
-        -moz-border-radius: 30px;
-        border-radius: 30px;
-        background-color: #ff5c6c;
-        position: absolute;
-        right: 6px;
-        top: -10px;
-    }
 
 @-moz-keyframes heartbit {
     0% {
@@ -1754,27 +1660,6 @@ Notify
     display: block;
 }
 
-.chatonline img {
-    margin-right: 10px;
-    float: left;
-    width: 30px;
-}
-
-.chatonline li a {
-    padding: 13px 0;
-    float: left;
-    width: 100%;
-}
-
-    .chatonline li a span {
-        color: #67757c;
-    }
-
-        .chatonline li a span small {
-            display: block;
-            font-size: 10px;
-        }
-
 /*******************
  Right side toggle
 *******************/
@@ -1981,14 +1866,14 @@ Megamenu
         background: #ffffff;
     }
 
-    .mega-dropdown .nav-accordion .card-header h5 {
-        margin: 0px;
-    }
+        .mega-dropdown .nav-accordion .card-header h5 {
+            margin: 0px;
+        }
 
-    .mega-dropdown .nav-accordion .card-header h5 a {
-        text-decoration: none;
-        color: #67757c;
-    }
+            .mega-dropdown .nav-accordion .card-header h5 a {
+                text-decoration: none;
+                color: #67757c;
+            }
 
 /*******************
 Wave Effects
@@ -2012,54 +1897,54 @@ Wave Effects
     transition: all 0.1s ease-out;
 }
 
-.waves-effect .waves-ripple {
-    position: absolute;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    margin-top: -10px;
-    margin-left: -10px;
-    opacity: 0;
-    background: rgba(0, 0, 0, 0.2);
-    transition: all 0.7s ease-out;
-    -webkit-transition-property: -webkit-transform, opacity;
-    -moz-transition-property: -moz-transform, opacity;
-    -o-transition-property: -o-transform, opacity;
-    transition-property: opacity, -webkit-transform;
-    -o-transition-property: transform, opacity;
-    transition-property: transform, opacity;
-    transition-property: transform, opacity, -webkit-transform;
-    transform: scale(0);
-    pointer-events: none;
-}
+    .waves-effect .waves-ripple {
+        position: absolute;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        margin-top: -10px;
+        margin-left: -10px;
+        opacity: 0;
+        background: rgba(0, 0, 0, 0.2);
+        transition: all 0.7s ease-out;
+        -webkit-transition-property: -webkit-transform, opacity;
+        -moz-transition-property: -moz-transform, opacity;
+        -o-transition-property: -o-transform, opacity;
+        transition-property: opacity, -webkit-transform;
+        -o-transition-property: transform, opacity;
+        transition-property: transform, opacity;
+        transition-property: transform, opacity, -webkit-transform;
+        transform: scale(0);
+        pointer-events: none;
+    }
 
-.waves-effect.waves-light .waves-ripple {
-    background-color: rgba(255, 255, 255, 0.45);
-}
+    .waves-effect.waves-light .waves-ripple {
+        background-color: rgba(255, 255, 255, 0.45);
+    }
 
-.waves-effect.waves-red .waves-ripple {
-    background-color: rgba(244, 67, 54, 0.7);
-}
+    .waves-effect.waves-red .waves-ripple {
+        background-color: rgba(244, 67, 54, 0.7);
+    }
 
-.waves-effect.waves-yellow .waves-ripple {
-    background-color: rgba(255, 235, 59, 0.7);
-}
+    .waves-effect.waves-yellow .waves-ripple {
+        background-color: rgba(255, 235, 59, 0.7);
+    }
 
-.waves-effect.waves-orange .waves-ripple {
-    background-color: rgba(255, 152, 0, 0.7);
-}
+    .waves-effect.waves-orange .waves-ripple {
+        background-color: rgba(255, 152, 0, 0.7);
+    }
 
-.waves-effect.waves-purple .waves-ripple {
-    background-color: rgba(156, 39, 176, 0.7);
-}
+    .waves-effect.waves-purple .waves-ripple {
+        background-color: rgba(156, 39, 176, 0.7);
+    }
 
-.waves-effect.waves-green .waves-ripple {
-    background-color: rgba(76, 175, 80, 0.7);
-}
+    .waves-effect.waves-green .waves-ripple {
+        background-color: rgba(76, 175, 80, 0.7);
+    }
 
-.waves-effect.waves-teal .waves-ripple {
-    background-color: rgba(0, 150, 136, 0.7);
-}
+    .waves-effect.waves-teal .waves-ripple {
+        background-color: rgba(0, 150, 136, 0.7);
+    }
 
 html body .waves-notransition {
     transition: none;
@@ -2080,12 +1965,12 @@ html body .waves-notransition {
     vertical-align: bottom;
 }
 
-.waves-input-wrapper .waves-button-input {
-    position: relative;
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
+    .waves-input-wrapper .waves-button-input {
+        position: relative;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
 
 .waves-block {
     display: block;
@@ -2114,23 +1999,6 @@ Table td vertical middle
 .table.no-border tbody td {
     border: 0px;
 }
-
-/*******************
-Other comon js for all pages
-*******************/
-.calendar-events {
-    padding: 8px 10px;
-    border: 1px solid #ffffff;
-    cursor: move;
-}
-
-    .calendar-events:hover {
-        border: 1px dashed rgba(120, 130, 140, 0.13);
-    }
-
-    .calendar-events i {
-        margin-right: 8px;
-    }
 
 .table-responsive {
     display: block;
@@ -2177,46 +2045,6 @@ html body .flotTip {
 body .jqstooltip {
     border-color: transparent;
     border-radius: 60px;
-}
-
-/*******************
-Notification page Jquery toaster
-******************/
-.jq-icon-info {
-    background-color: #20aee3;
-    color: #ffffff;
-}
-
-.jq-icon-success {
-    background-color: #24d2b5;
-    color: #ffffff;
-}
-
-.jq-icon-error {
-    background-color: #ff5c6c;
-    color: #ffffff;
-}
-
-.jq-icon-warning {
-    background-color: #ff9041;
-    color: #ffffff;
-}
-
-/*******************
-c3 chart global
-******************/
-.c3 text {
-    fill-opacity: 0.5;
-}
-
-.no-shrink {
-    flex-shrink: 0;
-}
-
-.up-img {
-    background-size: cover;
-    background-position: center center;
-    min-height: 340px;
 }
 
 .pagecount {
@@ -3046,80 +2874,9 @@ form label {
     padding-bottom: 20px;
 }
 
-/*******************
-Form Dropzone
-******************/
-.dropzone {
-    border: 1px dashed #b1b8bb;
-}
-
-    .dropzone .dz-message {
-        padding: 5% 0;
-        margin: 0px;
-    }
-
-/*******************
-Form Pickers
-******************/
-.asColorPicker-dropdown {
-    max-width: 260px;
-}
-
-.asColorPicker-trigger {
-    position: absolute;
-    top: 0;
-    right: -35px;
-    height: 38px;
-    width: 37px;
-    border: 0;
-}
-
-.asColorPicker-clear {
-    display: none;
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    text-decoration: none;
-}
-
 table th {
     font-weight: 400;
 }
-
-.daterangepicker td.active,
-.daterangepicker td.active:hover {
-    background-color: #20aee3;
-}
-
-.datepicker table tr td.today,
-.datepicker table tr td.today.disabled,
-.datepicker table tr td.today.disabled:hover,
-.datepicker table tr td.today:hover {
-    background: #20aee3;
-    color: #ffffff;
-}
-
-.datepicker td,
-.datepicker th {
-    padding: 5px 10px;
-}
-
-/*******************
-Form summernote
-******************/
-.note-popover,
-.note-icon-caret {
-    display: none;
-}
-
-.note-editor.note-frame {
-    border: 1px solid #b1b8bb;
-}
-
-    .note-editor.note-frame .panel-heading {
-        padding: 6px 10px 10px;
-        border-bottom: 1px solid rgba(120, 130, 140, 0.13);
-    }
 
 .label {
     display: inline-block;
@@ -7132,11 +6889,11 @@ widget-chart-page product review
         display: block !important;
     }
 
-    .d-flex.no-block {
-        display: -webkit-box !important;
-        display: -ms-flexbox !important;
-        display: flex !important;
-    }
+        .d-flex.no-block {
+            display: -webkit-box !important;
+            display: -ms-flexbox !important;
+            display: flex !important;
+        }
 }
 
 /*-- ============================================================== 
@@ -7148,9 +6905,9 @@ widget-chart-page product review
         flex-shrink: 0;
     }
 
-    .navbar-header .navbar-brand {
-        padding-top: 0px;
-    }
+        .navbar-header .navbar-brand {
+            padding-top: 0px;
+        }
 
     /*This is for the breeadcrumd*/
     .page-titles .breadcrumb {
@@ -7193,47 +6950,47 @@ widget-chart-page product review
         width: 100%;
     }
 
-    .topbar .top-navbar {
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-        flex-direction: row;
-        -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
-        -webkit-align-items: center;
-    }
+        .topbar .top-navbar {
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            -webkit-align-items: center;
+        }
 
-    .topbar .top-navbar .navbar-collapse {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        width: 100%;
-    }
+            .topbar .top-navbar .navbar-collapse {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                width: 100%;
+            }
 
-    .topbar .top-navbar .navbar-nav {
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-        flex-direction: row;
-    }
+            .topbar .top-navbar .navbar-nav {
+                -webkit-box-orient: horizontal;
+                -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                flex-direction: row;
+            }
 
-    .topbar .top-navbar .navbar-nav > .nav-item.show {
-        position: static;
-    }
+                .topbar .top-navbar .navbar-nav > .nav-item.show {
+                    position: static;
+                }
 
-    .topbar .top-navbar .navbar-nav > .nav-item.show .dropdown-menu {
-        width: 100%;
-        margin-top: 0px;
-    }
+                    .topbar .top-navbar .navbar-nav > .nav-item.show .dropdown-menu {
+                        width: 100%;
+                        margin-top: 0px;
+                    }
 
-    .topbar .top-navbar .navbar-nav > .nav-item > .nav-link {
-        padding-left: .50rem;
-        padding-right: .50rem;
-    }
+                .topbar .top-navbar .navbar-nav > .nav-item > .nav-link {
+                    padding-left: .50rem;
+                    padding-right: .50rem;
+                }
 
-    .topbar .top-navbar .navbar-nav .dropdown-menu {
-        position: absolute;
-    }
+                .topbar .top-navbar .navbar-nav .dropdown-menu {
+                    position: absolute;
+                }
 
     .mega-dropdown .dropdown-menu {
         height: 480px;
@@ -7388,10 +7145,10 @@ widget-chart-page product review
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 }
 
-.login-form-1 h3 {
-    text-align: center;
-    color: #333;
-}
+    .login-form-1 h3 {
+        text-align: center;
+        color: #333;
+    }
 
 .login-container form {
     padding: 10%;
